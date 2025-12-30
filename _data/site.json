@@ -12,7 +12,7 @@
   "girlqq": "3236478086",
   "boyimg": "https://q1.qlogo.cn/g?b=qq&nk=1409514882&s=640",
   "girlimg": "https://q1.qlogo.cn/g?b=qq&nk=3236478086&s=640",
-  "bgimg": "Style/img/Cover.webp",
+  "bgimg": "/Style/img/Cover.webp",
   "anniversary": "2020-05-20T13:14:20",
   "cards": [
     {"label":"记事","href":"little.html","desc":"记录我们的点滴","icon":"Style/img/home/home-page.svg"},
