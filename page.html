@@ -1,0 +1,51 @@
+---
+layout: default
+title: 记事详情
+---
+<body>
+
+
+  <main id="pjax-container">
+    <div class="central">
+      <div class="title"></div>
+      <div class="row central central-800">
+        <div class="card col-lg-12 col-md-12 col-sm-12 col-sm-x-12">
+          <div class="little_texts">
+            <div class="top-title f2" id="article-title">加载中...</div>
+            <div class="info"><span id="article-meta"></span></div>
+            <div class="line-top"></div>
+            <div id="md-view" class="file">文章内容加载中...</div>
+            <div class="line"><p>The content ends here.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <script>
+  (function(){
+    function qs(name){ var m=location.search.match(new RegExp('(?:\\?|&)'+name+'=([^&]*)')); return m?decodeURIComponent(m[1]):null; }
+    var id = qs('id');
+    if(id){ location.href = '/page/' + encodeURIComponent(id) + '.html'; return; }
+    var titleEl = document.getElementById('article-title');
+    var metaEl = document.getElementById('article-meta');
+    var viewEl = document.getElementById('md-view');
+
+    function renderArticle(a){
+      if(!a){ titleEl.textContent='未找到该文章'; metaEl.textContent=''; viewEl.innerHTML='<p>没有内容。</p>'; return; }
+      titleEl.textContent = a.articletitle || '无标题';
+      metaEl.innerHTML = '<svg class="little_icon" aria-hidden="true"><use xlink:href="#icon-shoucang"></use></svg>' + (a.articlename||'') + ' <i>记录于</i> ' + (a.articletime||'');
+      viewEl.innerHTML = a.articletext || '';
+      // 更新 document title
+      document.title = (a.articletitle ? (a.articletitle + ' — ') : '') + '记事 - Like Girl';
+    }
+
+    if(!id){ renderArticle(null); return; }
+    fetch('data/little.json').then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(list){
+      var article = list.find(function(it){ return String(it.id) === String(id); });
+      renderArticle(article);
+    }).catch(function(e){ console.warn('failed to load little.json', e); renderArticle(null); });
+  })();
+  </script>

@@ -1,0 +1,66 @@
+---
+layout: default
+title: 首页
+---
+
+
+  <!-- 主区域：保持 #pjax-container 以便之后引入 PJAX 或局部替换 -->
+  <main id="pjax-container">
+    <!-- 时间区 -->
+    <section class="time">
+      <span id="span_dt_dt"></span>
+      <b id="tian">0天</b>
+      <b id="shi">0时</b>
+      <b id="fen">0分</b>
+      <b id="miao">00秒</b>
+    </section>
+
+    <!-- 卡片区（参照 index.php） -->
+    {% assign anim = site.data.site.Animation | default: site.data.site.animation %}
+    <section class="card-wrap">
+      <div class="row central">
+        <!-- 三个小卡（col-lg-4） -->
+        <div class="card col-lg-4 col-sm-12 col-sm-x-12 flex-h {% if anim == '1' or anim == true %}animated fadeInUp{% endif %}">
+          <img src="{{ site.data.site.cards[0].icon | default: 'Style/img/home/home-page.svg' }}" alt="">
+          <div class="text">
+            <span><a href="{{ site.data.site.cards[0].href | default: 'little.html' }}">{{ site.data.site.cards[0].label | default: '记事' }}</a></span>
+            <p>{{ site.data.site.cards[0].desc | default: '记录我们的点滴' }}</p>
+          </div>
+        </div>
+
+        <div class="card col-lg-4 col-sm-12 col-sm-x-12 flex-h {% if anim == '1' or anim == true %}animated fadeInUp{% endif %}">
+          <img src="{{ site.data.site.cards[1].icon | default: 'Style/img/home/home-msg.svg' }}" alt="">
+          <div class="text">
+            <span><a href="{{ site.data.site.cards[1].href | default: 'leaving.html' }}">{{ site.data.site.cards[1].label | default: '留言板' }}</a></span>
+            <p>{{ site.data.site.cards[1].desc | default: '写下彼此的想念' }}</p>
+          </div>
+        </div>
+
+        <div class="card col-lg-4 col-sm-12 col-sm-x-12 flex-h {% if anim == '1' or anim == true %}animated fadeInUp{% endif %}">
+          <img src="{{ site.data.site.cards[2].icon | default: 'Style/img/home/home-about.svg' }}" alt="">
+          <div class="text">
+            <span><a href="{{ site.data.site.cards[2].href | default: 'about.html' }}">{{ site.data.site.cards[2].label | default: '关于' }}</a></span>
+            <p>{{ site.data.site.cards[2].desc | default: '我们的故事与简介' }}</p>
+          </div>
+        </div>
+
+        <!-- 两个大卡（col-lg-6） -->
+        <div class="card-b col-lg-6 col-12 col-sm-12 flex-h {% if anim == '1' or anim == true %}animated fadeInUp{% endif %}">
+          <img src="{{ site.data.site.cards[3].icon | default: 'Style/img/home/home-photo.svg' }}" alt="">
+          <div class="text">
+            <span><a href="{{ site.data.site.cards[3].href | default: 'loveImg.html' }}">{{ site.data.site.cards[3].label | default: 'Love Photo' }}</a></span>
+            <p>{{ site.data.site.cards[3].desc | default: '恋爱相册 记录最美瞬间' }}</p>
+          </div>
+        </div>
+
+        <div class="card-b col-lg-6 col-12 col-sm-12 flex-h {% if anim == '1' or anim == true %}animated fadeInUp{% endif %}">
+          <img src="{{ site.data.site.cards[4].icon | default: 'Style/img/home/home-list.svg' }}" alt="">
+          <div class="text">
+            <span><a href="{{ site.data.site.cards[4].href | default: 'list.html' }}">{{ site.data.site.cards[4].label | default: 'Love List' }}</a></span>
+            <p>{{ site.data.site.cards[4].desc | default: '恋爱列表 你我之间的约定' }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+

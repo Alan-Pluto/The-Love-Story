@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  {% include head.html %}
+  <title>{% if page.title %}{{ page.title }} - {{ site.data.site.title }}{% else %}{{ site.data.site.title }}{% endif %}</title>
+</head>
+<body>
+  {% include header.html %}
+
+  {{ content }}
+
+  {% include footer.html %}
+  {% include scripts.html %}
+</body>
+</html>

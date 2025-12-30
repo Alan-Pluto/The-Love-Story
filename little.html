@@ -1,0 +1,35 @@
+---
+layout: default
+title: 记事
+---
+
+  <div id="pjax-container">
+    <div class="central">
+      <div class="title"><h1>记事</h1></div>
+      <div class="row central central-800" id="little-list">
+        {% if site.data.little and site.data.little.size > 0 %}
+          {% for it in site.data.little %}
+            <div class="card col-lg-12 col-md-12 col-sm-12 col-sm-x-12 {% if site.data.site.Animation == '1' or site.data.site.animation == '1' or site.data.site.Animation == true %}animated fadeInUp delay-03s{% endif %}">
+              <div class="little_texts">
+                <a href="{{ '/page/' | append: it.id | append: '.html' | relative_url }}">
+                  <div class="top-title textOneHide">{{ it.articletitle | default: '无标题' }}
+                    <svg class="little_icon" aria-hidden="true"><use xlink:href="#icon-zhankai"></use></svg>
+                  </div>
+                </a>
+                <div class="info">
+                  <span>
+                    <svg class="little_icon" aria-hidden="true"><use xlink:href="#icon-shoucang"></use></svg>
+                    {{ it.articlename }} <i>记录于</i> {{ it.articletime }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="card">暂无记事（请在 data/little.json 中添加文章）</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+

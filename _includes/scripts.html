@@ -1,0 +1,132 @@
+<script src="/Style/jquery/jquery.min.js"></script>
+<script src="/Botui/botui.min.js"></script>
+<script src="/Style/js/vue.min.js"></script>
+<script src="/Style/js/funlazy.min.js"></script>
+<script src="/Style/js/loading.js"></script>
+<script src="/Style/js/nprogress.js"></script>
+<script src="/Style/toastr/toastr.js"></script>
+
+<script>
+  window.siteConfig = {{ site.data.site | jsonify }}; // 全局站点配置
+</script>
+
+<script>
+  // ===============================
+  //  Anniversary 纪念日计时功能
+  // ===============================
+  (function() {
+
+    let anniversaryDate = new Date(2020, 5, 20, 13, 14, 20); // 默认纪念日：2020 年 6 月 20 日 13:14:20
+    let timePrefix = '这是我们一起走过的'; // 默认前缀文字
+
+    function initAnniversary() {
+      if (!window.siteConfig) return;
+
+      if (window.siteConfig.anniversary) {
+        const d = new Date(window.siteConfig.anniversary);
+        if (!isNaN(d)) anniversaryDate = d;
+      } else if (window.siteConfig.startTime) {
+        const d2 = new Date(window.siteConfig.startTime);
+        if (!isNaN(d2)) anniversaryDate = d2;
+      }
+
+      if (window.siteConfig.timePrefix)
+        timePrefix = window.siteConfig.timePrefix;
+    }
+
+    function updateTime() {
+      const today = new Date();
+      let diff = today.getTime() - anniversaryDate.getTime();
+      if (diff < 0) diff = 0;
+
+      const msPerDay = 24 * 60 * 60 * 1000;
+      const e_days = diff / msPerDay;
+      const days = Math.floor(e_days);
+      const e_hours = (e_days - days) * 24;
+      const hours = Math.floor(e_hours);
+      const e_minutes = (e_hours - hours) * 60;
+      const minutes = Math.floor(e_minutes);
+      let seconds = Math.floor((e_minutes - minutes) * 60);
+
+      const spanEl = document.getElementById('span_dt_dt'); if (spanEl) spanEl.innerHTML = timePrefix;
+      const tianEl = document.getElementById('tian'); if (tianEl) tianEl.innerHTML = days + '天';
+      const shiEl = document.getElementById('shi'); if (shiEl) shiEl.innerHTML = hours + '时';
+      const fenEl = document.getElementById('fen'); if (fenEl) fenEl.innerHTML = minutes + '分';
+      if (seconds < 10) seconds = '0' + seconds;
+      const miaoEl = document.getElementById('miao'); if (miaoEl) miaoEl.innerHTML = seconds + '秒';
+    }
+
+    // 监听 DOM 加载完成
+    document.addEventListener('DOMContentLoaded', function() {
+      initAnniversary();
+      updateTime();
+      setInterval(updateTime, 1000);
+    });
+  })();
+</script>
+
+<script>
+  // footer 初始化脚本（from footer.php）
+  (function(){
+    $(function () {
+      // 将卡片整体作为可点击项
+      $('.card, .card-b').click(function() {
+        var link = $(this).find('a').get(0);
+        if (link) link.click();
+      });
+
+      $('#MessageBtn').click(function() {
+        var targetOffset = $('#MessageArea').offset().top;
+        if ($(window).scrollTop() !== targetOffset) {
+          $('html, body').animate({ scrollTop: targetOffset }, 800);
+        }
+      });
+
+      // 图片高亮并初始化 toastr
+      $(".love_img img,.lovelist img,.little_texts img").addClass("spotlight").each(function () {
+        this.onclick = function () { return hs && hs.expand ? hs.expand(this) : true; }
+        toastr.options = { closeButton:true, progressBar:true, positionClass: "toast-top-right" };
+      });
+
+      // 滚动改变 header 文字颜色
+      window.onscroll = function () {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop > 500) { $('.wenan,.alogo').css('color', '#333'); }
+        else { $('.wenan,.alogo').css('color', 'rgb(97 97 97)'); }
+      }
+
+      try { FunLazy({ placeholder: "Style/img/Loading2.gif", effect: "show", strictLazyMode: false }); } catch(e) { }
+
+      // 视频播放控件：简化版本
+      function setupVideoPlayer(video) {
+        var $video = $(video);
+        var btn = $('<div class="play-pause-btn">▶</div>');
+        $video.wrap('<div class="video-container"></div>').parent().append(btn);
+        $video.attr('controls', false).css({ width: '100%', height: 'auto' });
+        btn.on('click', function (e) { e.stopPropagation(); if ($video[0].paused) { $video[0].play(); btn.hide(); } else { $video[0].pause(); btn.show(); } });
+        $video.on('click', function () { if ($video[0].paused) { $video[0].play(); btn.hide(); } else { $video[0].pause(); btn.show(); } });
+      }
+      $('video').each(function () { setupVideoPlayer(this); });
+
+      // 将 siteConfig 应用到 footer（copy 等）
+      if (window.siteConfig) {
+        if (window.siteConfig.copy) document.getElementById('site-copy').textContent = window.siteConfig.copy;
+        if (window.siteConfig.icp) {
+          var p = document.createElement('p');
+          p.innerHTML = '<img src="Style/img/icp.svg"><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">'+window.siteConfig.icp+'</a>';
+          document.querySelector('.footer').appendChild(p);
+        }
+      }
+    });
+  })();
+</script>
+
+<style>
+  /* footer.php 中的一些辅助样式 */
+  .icon { width: 1.5em; height: 1.5em; vertical-align: -0.3em; fill: currentColor; overflow: hidden; }
+  li.cike { border-bottom: 1px solid #ddd; }
+  li { list-style-type: none; }
+  .cike:hover { cursor: url(Style/cur/hover.cur), pointer; }
+  button:disabled { background: #888; opacity: 0.6; }
+  .avatar { width: 3em; height: 3em; border-radius: 50%; box-shadow: 0 2px 20px #c5c5c575; border: 2px solid #fff; margin-right:0.8rem; }
+</style>

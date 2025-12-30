@@ -1,0 +1,32 @@
+{
+  "title": "The Love Story",
+  "description": "简洁的情侣小站，记录恋爱点滴与回忆。",
+  "keywords": "Like Girl,情侣小站,恋爱相册,记事",
+  "favicon": "/Style/img/favicon.ico",
+  "logo": "The Love Story",
+  "writing": "我们的故事",
+  "timePrefix": "这是我们一起走过的",
+  "boy": "Alan",
+  "girl": "Pluto",
+  "boyqq": "1409514882",
+  "girlqq": "3450940986",
+  "boyimg": "https://q1.qlogo.cn/g?b=qq&nk=1409514882&s=640",
+  "girlimg": "https://q1.qlogo.cn/g?b=qq&nk=3450940986&s=640",
+  "bgimg": "/Style/img/Cover.webp",
+  "anniversary": "2025-06-18T12:41:00",
+  "cards": [
+    {"label":"记事","href":"little.html","desc":"记录我们的点滴","icon":"/Style/img/home/home-page.svg"},
+    {"label":"留言板","href":"leaving.html","desc":"写下彼此的想念","icon":"/Style/img/home/home-msg.svg"},
+    {"label":"关于","href":"about.html","desc":"我们的故事与简介","icon":"/Style/img/home/home-about.svg"},
+    {"label":"Love Photo","href":"loveImg.html","desc":"恋爱相册 记录最美瞬间","icon":"/Style/img/home/home-photo.svg"},
+    {"label":"Love List","href":"list.html","desc":"恋爱列表 你我之间的约定","icon":"/Style/img/home/home-list.svg"}
+  ],
+  "copy": "© The Love Story - 保留所有权利",
+  "icp": "",
+  "about": {
+    "title": "关于我们",
+    "subtitle": "我们的故事与简介",
+    "content": "<p>这是默认的关于说明，可以在 <code>data/site.json</code> 中编辑此内容。你可以放入任意 HTML 片段，例如站点的历史、联系方式和致辞。</p>",
+    "image": "/Style/img/Cover.webp"
+  }
+}

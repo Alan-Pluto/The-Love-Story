@@ -1,0 +1,78 @@
+---
+layout: default
+title: 恋爱相册
+---
+
+  <div id="pjax-container">
+    <h4 class="text-ce central">记录下你的最美瞬间</h4>
+    <div class="row central">
+      {% if site.data.loveImg and site.data.loveImg.size > 0 %}
+        {% for it in site.data.loveImg %}
+          <div class="img_card col-lg-4 col-md-6 col-sm-12 col-sm-x-12 {% if site.data.site.Animation == '1' or site.data.site.animation == '1' or site.data.site.Animation == true %}animated zoomIn delay-03s{% endif %}">
+            <div class="love_img">
+              <img data-funlazy="{{ it.src | default: it.thumb }}" alt="{{ it.title | escape }}" data-description="{% if it.date %}{{ it.date }}{% endif %}">
+
+              <div class="words">
+                <i>Date：{% if it.date %}{{ it.date }}{% else %}—{% endif %}</i>
+                <span>{{ it.title }}</span>
+              </div>
+
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="card">暂无相片（请在 data/loveImg.json 中配置图片）</div>
+      {% endif %}
+    </div>
+  </div> 
+
+  <!-- 简单 lightbox 弹层 -->
+  <div id="lightbox" class="lightbox" style="display:none;">
+    <div class="lightbox-inner" role="dialog" aria-modal="true">
+      <img id="lightbox-img" src="" alt="">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+      <button id="lightbox-close" class="lightbox-close" aria-label="关闭">✕</button>
+    </div>
+  </div>
+
+  <style>
+    /* use existing loveImg.css for card styles; only lightbox override here */
+    #lightbox { position:fixed; inset:0; background:rgba(0,0,0,0.8); display:none; align-items:center; justify-content:center; z-index:9999; }
+    #lightbox .lightbox-inner { position:relative; max-width:90%; max-height:90%; }
+    #lightbox img { max-width:100%; max-height:80vh; border-radius:8px; display:block; margin:0 auto; }
+    #lightbox .lightbox-caption { color:#fff; text-align:center; margin-top:8px; }
+    #lightbox .lightbox-close { position:absolute; top:-12px; right:-12px; background:#fff; border-radius:50%; border:none; width:36px; height:36px; cursor:pointer; }
+
+    @media (max-width: 768px) { .img_card { padding:1rem; } .love_img img{ width:100%; height:auto; } }
+  </style>
+
+  <script>
+  (function(){
+    var lightbox = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightbox-img');
+    var lbCaption = document.getElementById('lightbox-caption');
+    var lbClose = document.getElementById('lightbox-close');
+
+    function openLightbox(src, caption){
+      lbImg.src = src; lbImg.alt = caption || '';
+      lbCaption.textContent = caption || '';
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightbox.style.display = 'none'; lbImg.src = ''; document.body.style.overflow = ''; }
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+
+    // 使用事件委托，匹配 love_img 内的 img 节点
+    document.addEventListener('click', function(e){
+      var img = e.target.closest && e.target.closest('.love_img img'); if(!img) return;
+      var src = img.getAttribute('data-funlazy') || img.getAttribute('data-src') || img.src;
+      var caption = img.getAttribute('data-description') || img.getAttribute('alt') || '';
+      openLightbox(src, caption);
+    });
+
+ })();
+  </script>
+

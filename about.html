@@ -1,0 +1,125 @@
+---
+layout: default
+title: 关于
+---
+
+
+<div id="pjax-container">
+  <style>
+    .central-600 {
+      background: url("{{ site.data.site.about.image }}") no-repeat center top;
+      background-size: cover;
+    }
+
+    .central {
+      padding: 0;
+    }
+  </style>
+
+  <h4 class="text-ce central">与 <i>{{ site.data.site.about.title }}</i> 小站对话中...</h4>
+  <div class="central central-600">
+    <div class="botui-app-container" id="botui-app">
+      <bot-ui></bot-ui>
+    </div>
+  </div>
+  
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  var botui = new BotUI("botui-app");
+
+  botui.message.bot({ delay: 200, content: {{ site.data.about.info1 | jsonify }} })
+    .then(function () {
+      return botui.message.bot({ delay: 1000, content: {{ site.data.about.info2 | jsonify }} });
+    })
+    .then(function () {
+      return botui.message.bot({ delay: 1000, content: {{ site.data.about.info3 | jsonify }} });
+    })
+    .then(function () {
+      return botui.action.button({
+        delay: 1500,
+        action: [
+          { text: {{ site.data.about.btn1 | jsonify }}, value: "continue" },
+          { text: {{ site.data.about.btn2 | jsonify }}, value: "bye" }
+        ]
+      });
+    })
+    .then(function (res) {
+      if (res.value === "continue") {
+        return other();
+      }
+      if (res.value === "bye") {
+        return botui.message.bot({
+          delay: 1500,
+          content: {{ site.data.about.infod5 | jsonify }}
+        }).then(function () {
+        return botui.message.bot({ delay: 1500, content: "本次会话结束..." });
+      });
+      }
+    });
+
+  function other() {
+    return botui.message.bot({ delay: 1500, content: {{ site.data.about.infox1 | jsonify }} })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infox2 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infox3 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infox4 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infox5 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infox6 | jsonify }} });
+      })
+      .then(function () {
+        return botui.action.button({
+          delay: 1500,
+          action: [{ text: {{ site.data.about.btnx2 | jsonify }}, value: "next" }]
+        });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infof1 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infof2 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infof3 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infof4 | jsonify }} });
+      })
+      .then(function () {
+        return botui.action.button({
+          delay: 1500,
+          action: [{ text: {{ site.data.about.btnf3 | jsonify }}, value: "next" }]
+        });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infod1 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infod2 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infod3 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infod4 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: {{ site.data.about.infod5 | jsonify }} });
+      })
+      .then(function () {
+        return botui.message.bot({ delay: 1500, content: "本次会话结束..." });
+      });
+  }
+});
+</script>
+
+  
+</div>

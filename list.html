@@ -1,0 +1,74 @@
+---
+layout: default
+title: Love List
+---
+
+  <div id="pjax-container">
+    <div class="central">
+      <div class="title">
+        <h1>总有些惊奇的际遇 比方说当我遇见你</h1>
+      </div>
+      <div class="row central central-800">
+        {% if site.data.lovelist and site.data.lovelist.size > 0 %}
+        <div class="card col-lg-12 col-md-12 col-sm-12 col-sm-x-12">
+          <div class="list_texts {% if site.data.site.Animation == '1' or site.data.site.animation == '1' or site.data.site.Animation == true %}animated fadeInUp delay-03s{% endif %}">
+            <div class="lovelist">
+              {% for it in site.data.lovelist %}
+                <li class="cike">
+                  {% if it.icon == 1 or it.icon == '1' or it.icon == true %}<i class="iconfont icon-chenggong2 com"></i>{% else %}<i class="iconfont icon-chenggong2 air"></i>{% endif %}
+                  <span>{{ it.eventname | default: it.title | default: '无标题' }}</span>
+                  {% if it.imgurl and it.imgurl != '0' %}
+                    <svg class="icon" aria-hidden="true"><use xlink:href="#icon-tupian"></use></svg>
+                  {% endif %}
+                </li>
+                <ul>
+                  <li>
+                    {% if it.imgurl and it.imgurl != '0' %}
+                      <img data-funlazy="{{ it.imgurl }}" alt="{{ it.eventname | escape }}">
+                    {% endif %}
+                    {% if it.summary %}
+                      <p>{{ it.summary }}</p>
+                    {% endif %}
+                    {% if it.date %}<i>{{ it.date }}</i>{% endif %}
+                  </li>
+                </ul>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% else %}
+          <div class="card">暂无事件数据（请在 data/lovelist.json 中配置事件）</div>
+        {% endif %}
+    </div>
+  </div>
+
+  <style>
+    .icon { width:1.5em; height:1.5em; vertical-align:-0.3em; fill:currentColor; overflow:hidden; }
+    li.cike { border-bottom:1px solid #ddd; }
+    li { list-style-type:none; }
+    .cike:hover { cursor:pointer; cursor: url(Style/cur/hover.cur), pointer; }
+    .lovelist img { max-width:100%; border-radius:6px; display:block; margin:0.5rem 0; }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.jQuery) {
+        $('.lovelist ul').hide();
+        $('.lovelist li.cike').on('click', function(){
+          $(this).next('ul').slideToggle(500).siblings('ul').slideUp(500);
+        });
+      } else {
+        var lists = document.querySelectorAll('.lovelist ul');
+        lists.forEach(function(u){ u.style.display = 'none'; });
+        document.querySelectorAll('.lovelist li.cike').forEach(function(li){
+          li.addEventListener('click', function(){
+            var next = li.nextElementSibling; if(!next) return; if(next.style.display === 'none' || next.style.display === ''){ next.style.display = 'block'; } else { next.style.display = 'none'; }
+            var parent = li.parentElement; parent.querySelectorAll('ul').forEach(function(ul){ if(ul !== next) ul.style.display = 'none'; });
+          });
+        });
+      }
+    });
+  </script>
+
+
+

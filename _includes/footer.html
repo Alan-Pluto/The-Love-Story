@@ -1,0 +1,11 @@
+<footer class="footer-warp">
+  <div class="footer">
+    <p id="site-copy">{{ site.data.site.copy }}</p>
+  </div>
+</footer>
+
+{% if site.data.site.icp and site.data.site.icp != "" %}
+<p style="text-align:center;margin-top:.6rem;">
+  <img src="Style/img/icp.svg" style="height:1em;vertical-align:-0.1em;"> <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">{{ site.data.site.icp }}</a>
+</p>
+{% endif %}
