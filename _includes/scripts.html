@@ -1,10 +1,10 @@
-<script src="Style/jquery/jquery.min.js"></script>
-<script src="Botui/botui.min.js"></script>
-<script src="Style/js/vue.min.js"></script>
-<script src="Style/js/funlazy.min.js"></script>
-<script src="Style/js/loading.js"></script>
-<script src="Style/js/nprogress.js"></script>
-<script src="Style/toastr/toastr.js"></script>
+<script src="{{ '/Style/jquery/jquery.min.js' | relative_url }}"></script>
+<script src="{{ '/Botui/botui.min.js' | relative_url }}"></script>
+<script src="{{ '/Style/js/vue.min.js' | relative_url }}"></script>
+<script src="{{ '/Style/js/funlazy.min.js' | relative_url }}"></script>
+<script src="{{ '/Style/js/loading.js' | relative_url }}"></script>
+<script src="{{ '/Style/js/nprogress.js' | relative_url }}"></script>
+<script src="{{ '/Style/toastr/toastr.js' | relative_url }}"></script>
 
 <script>
   window.siteConfig = {{ site.data.site | jsonify }}; // 全局站点配置
