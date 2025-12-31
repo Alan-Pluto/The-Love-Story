@@ -1,29 +1,21 @@
 [
   {
-    "id": 1,
+    "id": 1, 
     "articletitle": "第一次散步的黄昏",
-    "articlename": "Alan",
+    "authorname": "Alan",
     "articletime": "2024-06-01",
-    "articletext": "<p>那天的落日很美，我们手牵手走过公园的小路。</p><p>写下这一刻，温柔如初。</p>",
-    "summary": "那天的落日很美，我们手牵手走过公园的小路。",
-    "img": "Style/img/Cover.webp"
+    "comment": "将文章的文件名配置在id字段中,方便网页调用"
   },
   {
     "id": 2,
     "articletitle": "迷你旅行",
-    "articlename": "Lina",
-    "articletime": "2024-09-12",
-    "articletext": "<p>周末小旅行，海风与笑声，带走了所有烦忧。</p>",
-    "summary": "周末小旅行，海风与笑声，带走了所有烦忧。",
-    "img": "https://i.mij.rip/2024/11/06/8e5ddbc590fa7a1c32ef05faf58617e4.webp"
+    "authorname": "Lina",
+    "articletime": "2024-09-12"
   },
   {
     "id": 3,
     "articletitle": "在家做饭的夜晚",
-    "articlename": "Alan",
-    "articletime": "2025-01-05",
-    "articletext": "<p>一起做饭，虽然手忙脚乱但格外温馨。</p>",
-    "summary": "一起做饭，虽然手忙脚乱但格外温馨。",
-    "img": "Style/img/Cover.webp"
+    "authorname": "Alan",
+    "articletime": "2025-01-05"
   }
 ]

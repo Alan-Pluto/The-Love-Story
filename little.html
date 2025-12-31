@@ -19,14 +19,14 @@ title: 记事
                 <div class="info">
                   <span>
                     <svg class="little_icon" aria-hidden="true"><use xlink:href="#icon-shoucang"></use></svg>
-                    {{ it.articlename }} <i>记录于</i> {{ it.articletime }}
+                    {{ it.authorname }} <i>记录于</i> {{ it.articletime }}
                   </span>
                 </div>
               </div>
             </div>
           {% endfor %}
         {% else %}
-          <div class="card">暂无记事（请在 data/little.json 中添加文章）</div>
+          <div class="card">暂无记事（请在 _data/little.json 中添加文章）</div>
         {% endif %}
       </div>
     </div>
