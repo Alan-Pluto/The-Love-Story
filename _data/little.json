@@ -6,7 +6,7 @@
     "articletime": "2024-06-01",
     "articletext": "<p>那天的落日很美，我们手牵手走过公园的小路。</p><p>写下这一刻，温柔如初。</p>",
     "summary": "那天的落日很美，我们手牵手走过公园的小路。",
-    "img": "/Style/img/Cover.webp"
+    "img": "Style/img/Cover.webp"
   },
   {
     "id": 2,
@@ -24,6 +24,6 @@
     "articletime": "2025-01-05",
     "articletext": "<p>一起做饭，虽然手忙脚乱但格外温馨。</p>",
     "summary": "一起做饭，虽然手忙脚乱但格外温馨。",
-    "img": "/Style/img/Cover.webp"
+    "img": "Style/img/Cover.webp"
   }
 ]
