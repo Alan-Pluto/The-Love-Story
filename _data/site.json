@@ -10,8 +10,6 @@
   "girl": "Pluto",
   "boyqq": "1409514882",
   "girlqq": "3236478086",
-  "boyimg": "https://q1.qlogo.cn/g?b=qq&nk=1409514882&s=640",
-  "girlimg": "https://q1.qlogo.cn/g?b=qq&nk=3236478086&s=640",
   "bgimg": "/Style/img/Cover.webp",
   "anniversary": "2020-05-20T13:14:20",
   "cards": [
@@ -26,7 +24,6 @@
   "about": {
     "title": "关于我们",
     "subtitle": "我们的故事与简介",
-    "content": "<p>这是默认的关于说明，可以在 <code>data/site.json</code> 中编辑此内容。你可以放入任意 HTML 片段，例如站点的历史、联系方式和致辞。</p>",
     "image": "Style/img/Cover.webp"
   }
 }

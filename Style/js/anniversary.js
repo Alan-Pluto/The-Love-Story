@@ -1,5 +1,5 @@
 // ===== 纪念日时间配置 =====
-// 优先使用 data/site.json 中的配置（ISO 字符串），否则回退到内置日期
+// 优先使用 _data/site.json 中的配置（ISO 字符串），否则回退到内置日期
 let anniversaryDate = new Date(2022, 6, 18, 12, 41, 0);
 let timePrefix = '这是我们一起走过的';
 function initAnniversary() {

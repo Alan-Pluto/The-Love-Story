@@ -1,7 +1,7 @@
 title: The Love Story
 description: "简洁的情侣小站，记录恋爱点滴与回忆。"
-baseurl: "/The-Love-Story" # 设置为仓库子路径如 "/my-repo"（如果部署到 user.github.io 下可留空）
-url: "https://alan-pluto.github.io" # 可在部署前设置你的站点URL
+baseurl: "" # 如果作为项目站点进行部署，请设置仓库子路径如 "/my-repo"；如果部署到 user.github.io 或者本地静态部署，请留空
+url: "https://alan-pluto.github.io" # 在部署前设置你的站点URL
 markdown: kramdown
 exclude:
   - node_modules
